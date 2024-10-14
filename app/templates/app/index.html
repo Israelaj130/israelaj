@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<ol>
+    <h2>Homepage</h2> <br>
+    {% for item in products %}
+   <li>{{item}}</li> 
+    {% endfor %}
+    <img src="{% static 'assets/abc.jpg' %}" alt="">
+</ol>
+{% endblock main %}

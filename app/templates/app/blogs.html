@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock links %}
+
+{% block main %}
+<h3>My blogs </h3>
+<div class="all_blogs">
+    {% for item in my_blogs %}
+    <div class="single-blog">
+        <div class="image-wrap">
+            <img src="{{item.image.url}}" alt="">
+        </div>
+        <div class="blog-bottom">
+            <p class="title-text">{{item.title}}</p>
+           <a href="{% url 'read' item.id %}"><button>Read</button></a>
+           <a href="{% url 'delete' item.id %}"><button>delete</button></a>
+           <a href="{% url 'edit' item.id %}"><button>edit</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<h3>Other people's blogs</h3>
+<div class="all_blogs">
+    {% for item in other_blogs %}
+    <div class="single-blog">
+        <div class="image-wrap">
+            <img src="{{item.image.url}}" alt="">
+        </div>
+        <div class="blog-bottom">
+            <p class="title-text">{{item.title}}</p>
+           <a href="{% url 'read' item.id %}"><button>Read</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock main%}

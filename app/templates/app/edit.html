@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+
+<img src="{{blog.image.url}}" alt="">
+
+<h2>Edit a blog</h2>
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Title:</label><br>
+    <input type="text" name="title" required value="{{blog.title}}"><br>
+    <label> Body:</label><br>
+    <textarea required name="body">{{blog.body}}</textarea><br>
+    <label>Image</label><br>
+    <Input type="file" name="image"><br>
+    <label>Description</label><br>
+    <textarea name="description">
+        {% if blog.description %}
+        {{blog.description}}
+        {% endif %}
+    </textarea><br>
+    <button>Edit blog</button>
+</form>
+{% endblock main %}

@@ -1,0 +1,15 @@
+body{
+    background-color: orange;
+}
+img{
+    height: 40vh;
+    width: 20vw;
+}
+.error{
+    color: red;
+    background-color: white;
+}
+.success{
+    color: green;
+    background-color: white;
+}

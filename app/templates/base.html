@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css'%}">
+        {% block links %}{% endblock links %}
+    </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href ="{% url 'home' %}">Homepage</a></li>
+            <li><a href="{% url 'about' %}">About page</a></li>
+            <li><a href="{% url 'contact' %}">Contact us</a></li>
+            
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            <li><a href="{% url 'create' %}">Create</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+    <p> Hi {{user.username}}</p>
+    {% endif %}
+    </nav>
+    <hr>
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{message}}</p>
+    {% endfor %}
+    <main>
+        {% block main %}
+        {% endblock main %}
+    </main>
+    <footer>This is the footer</footer>
+</body>
+</html>
